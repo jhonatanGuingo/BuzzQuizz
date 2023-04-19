@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BuzzQuizz</title>
+        <link rel="stylesheet" href="./estilos/css-reset.css">
+        <link rel="stylesheet" href="./estilos/estilo_pag_inicial.css">
+        <link rel="stylesheet" href="./estilos/estilo_pag_quiz.css">
+        <link rel="stylesheet" href="./estilos/estilo_pag_criar_quiz.css">
+    </head>
+    <body>
+        <div class="header">
+            <span class="titulo-header">BuzzQuizz</span>
+        </div>
+        <!-- BUTTON DE TESTE DE LAYOUT-->
+        <button id="btn_teste" class="button-teste" onclick="atualizar_seus_quizzes()">TESTE SEUS QUIZZES LAYOUT</button>
+        <!-- pagina inicial -->
+        <div id="pag_inicial" class="pagina-inicial">
+            <div class="seus-quizzes">
+                <div id="seus_quizzes_criar" class="seus-quizzes-criar-border">
+                    <div class="seus-quizzes-criar">
+                        <span class="seus-quizzes-criar-txt">
+                            Você não criou nenhum quizz ainda :(
+                        </span>
+                        <button class="seus-quizzes-criar-btn" onclick="alt_pag_inicial_quiz()">Criar Quizz</button>
+                    </div>    
+                </div>
+                <div id="seus_quizzes_mostrar" class="seus-quizzes-mostrar">
+                    <div class="seus-quizzes-mostrar-titulo">
+                        <span>Seus quizzes</span>
+                    </div>
+                    <div class="seus-quizzes-mostrar-conteudo">
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="seus-quizzes-mostrar-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="todos-quizzes">
+                <div class="todos-quizzes-mostrar">
+                    <div class="todos-quizzes-titulo">
+                        <span>Todos os quizzes</span>
+                    </div>
+                    <div class="todos-quizzes-conteudo">
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                        <div class="todos-quizzes-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
+                            <span class="todos-quizzes-conteudo-tituloquiz">
+                                teste
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- pagina quiz -->
+        <div class="pagina-quiz"></div>
+        <!-- pagina criação quiz -->
+        <div id="pag_criar_quiz" class="pagina-criar-quiz"></div>
+    </body>
+</html>
+
+<script src="./scripts/script_pag_inicial.js"></script>
+<script src="./scripts/script_alterar_pags.js"></script>
+<script src="./scripts/script_criar_quiz.js"></script>
