@@ -57,6 +57,7 @@ function alt_paginic_quiz(){
             pergunta_quiz_create_div.setAttribute("style", style_background_line);
             pergunta_quiz_create_div.appendChild(pergunta_quiz_create_p);
             conteudo_quiz_create_div.classList.add("conteudo-quizz");
+            conteudo_quiz_create_div.id = "caixa_pergunta";
             conteudo_quiz_create_div.appendChild(pergunta_quiz_create_div);
             conteudo_quiz_create_div.appendChild(img_opcoes_create_div);
             document.getElementById("perguntas_quiz").appendChild(conteudo_quiz_create_div);
