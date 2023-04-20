@@ -8,7 +8,19 @@ function altCriarQuizz(){
     pagInicial.classList.add('esconder');
     let info = document.querySelector('.info-do-quizz');
     info.classList.remove('esconder');
+    console.log(info);
 }
+//muda para tela de criação de perguntas
+function altCriarPerguntas(){
+    //alert('oii');
+    let=criarQuizz = document.getElementById("info_do_quizz");
+    console.log(criarQuizz);
+    criarQuizz.classList.add('esconder');
+    console.log(criarQuizz);
+    let perguntas = document.querySelector('.perguntas-do-quizz');
+    perguntas.classList.remove('esconder');
+}
+
 function alt_paginic_quiz(){
     let id = event.target.id;
     let send = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/" + id);
