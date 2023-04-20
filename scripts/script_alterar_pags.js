@@ -8,16 +8,16 @@ function altCriarQuizz(){
     console.log(pagInicial);
     let info = document.getElementById('info_do_quizz');
     console.log(info);
-    info.classList.add('info-do-quizz');
+    info.classList.add('centralizar');
     console.log(info);
 }
 //muda para tela de criação de perguntas
 function altCriarPerguntas(){
-    //alert('oii');
-    let criarQuizz = document.classList('.info-do-quizz') ;
-    criarQuizz.classList.remove('info-do-quiz');
+    let=criarQuizz = document.getElementById('info_do_quizz') ;
+    criarQuizz.classList.remove('centralizar');
+    criarQuizz.classList.add('esconder');
     let perguntas = document.getElementById('perguntas_do_quizz');
-    perguntas.classList.add('perguntas-do-quizz');
+    perguntas.classList.remove('esconder');
 }
 
 function alt_paginic_quiz(){
