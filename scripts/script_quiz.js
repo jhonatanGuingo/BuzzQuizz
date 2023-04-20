@@ -26,14 +26,43 @@ async function verificar_resposta(){
         wrong_answers = wrong_answers + 1;
     }
     if (right_answers + wrong_answers == n_questions){
-        console.log("fim");
-    }
-    if (question_box != perguntas_quiz.lastChild){
-        for (let c = 0; c < perguntas_quiz.children.length; c++){
-            if (perguntas_quiz.children[c] == question_box){
-                await sleep(2000);
-                perguntas_quiz.children[c+1].scrollIntoView({ behavior:"smooth", block:"start", inline:"start"});
+        let fim_create_div = document.createElement("div");
+        let fimtitulo_create_div = document.createElement("div");
+        let fimtitulo_create_p = document.createElement("p");
+        let fimlast_create_div = document.createElement("div");
+        let fimlast_create_img = document.createElement("img");
+        let fimlast_create_span = document.createElement("span");
+        let style_background_line = "background: rgb(255, 50, 50);";
+        let rights = Math.round((right_answers/n_questions)*100);
+        console.log(levels_quiz);
+        for (let i = 0; i < levels_quiz.length; i++){
+            let min_value = levels_quiz[i].minValue;
+            if (rights < min_value){
+                let title_level = levels_quiz[i-1].title;
+                let image_level = levels_quiz[i-1].image;
+                let text_level = levels_quiz[i-1].text;
+                break;
             }
+        }
+        fimtitulo_create_p.innerHTML = title_level;
+        fimtitulo_create_div.classList.add("pergunta-quizz");
+        fimtitulo_create_div.setAttribute("style", style_background_line);
+        fimtitulo_create_div.append(fimtitulo_create_p);
+        fim_create_div.appendChild(fimtitulo_create_div);
+        fim_create_div.classList.add("conteudo-quizz");
+        fimlast_create_img.setAttribute("src", image_level);
+        fimlast_create_span.innerHTMl = text_level;
+        fimlast_create_div.appendChild(fimlast_create_img);
+        fimlast_create_div.appendChild(fimlast_create_span);
+        fim_create_div.append(fimlast_create_div);
+        document.getElementById("perguntas_quiz").appendChild(fim_create_div);
+        console.log(levels_quiz);
+        console.log(rights);
+    }
+    for (let c = 0; c < perguntas_quiz.children.length; c++){
+        if (perguntas_quiz.children[c] == question_box){
+            await sleep(2000);
+            perguntas_quiz.children[c+1].scrollIntoView({ behavior:"smooth", block:"start", inline:"center"});
         }
     }
 }

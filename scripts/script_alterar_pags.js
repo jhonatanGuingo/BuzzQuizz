@@ -1,4 +1,5 @@
 let n_questions = 0;
+let levels_quiz = "";
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
     let=pagInicial = document.getElementById("pag_inicial"); 
@@ -29,6 +30,7 @@ function alt_paginic_quiz(){
         let titulo_quiz = response.data.title;
         let image_quiz = response.data.image;
         let questions_quiz = response.data.questions;
+        levels_quiz = response.data.levels;
         let title_geral_create_span = document.createElement("span");
         let img_geral_create_img = document.createElement("img");
         // Formatação da imagem no topo
