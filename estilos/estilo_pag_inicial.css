@@ -1,18 +1,12 @@
-.button-teste{
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    z-index: 2;
-}
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 0px 220px;
+    padding: 0px 200px;
 }
 .header{
     position: fixed;
     top: 0px;
     right: 0px;
-    z-index: 1;
+    z-index: 10;
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
@@ -37,6 +31,9 @@ body{
 .pagina-quiz{
     display: none;
     width: 100%;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 69px;
 }
 .pagina-criar-quiz{
     display: none;
@@ -109,14 +106,14 @@ body{
     align-items: flex-end;
     justify-content: flex-start;
     padding: 15px;
-    margin: 0px 0px 20px 0px;
-    border-radius: 20px;
+    margin: 0px 20px 20px 0px;
+    border-radius: 10px;
 }
 .seus-quizzes-mostrar-conteudo{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: stretch;
 }
 .seus-quizzes-mostrar-conteudo-tituloquiz{
@@ -138,18 +135,36 @@ body{
     align-items: flex-end;
     justify-content: flex-start;
     padding: 15px;
-    margin: 0px 0px 20px 0px;
-    border-radius: 20px;
+    margin: 0px 20px 20px 0px;
+    border-radius: 10px;
 }
 .todos-quizzes-conteudo{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: stretch;
+}
+.todos-quizzes-conteudo:nth-child(3n){
+    box-sizing: border-box;
+    background-size: 350px 180px;
+    width: 350px;
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 15px;
+    margin: 0px 0px 20px 0px;
+    border-radius: 10px;
 }
 .todos-quizzes-conteudo-tituloquiz{
     font-size: 20px;
     width: 100%;
     color: rgb(255, 255, 255);
+}
+.button-quiz{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
 }
