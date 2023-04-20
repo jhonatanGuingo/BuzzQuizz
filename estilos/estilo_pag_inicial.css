@@ -67,7 +67,7 @@ body{
     font-size: 25px;
     color: rgb(200, 200, 200);
     margin: 0px 0px 30px;
-    text-align: center;
+    text-align: center; 
 }
 .seus-quizzes-criar-btn{
     box-sizing: border-box;
@@ -79,6 +79,15 @@ body{
     padding: 10px 25px;
     border-radius: 30px;
 }
+.botao-criar-quizz{
+    background-color: rgb(255, 255, 255);
+    border: 0px;
+    color: #EC362D;
+    font-size: 30px;
+}
+.botao{
+    margin-top: 7px;
+}
 .seus-quizzes-mostrar{
     display: none;
     flex-direction: column;
@@ -88,6 +97,8 @@ body{
     font-size: 25px;
     font-weight: bold;
     margin: 0px 0px 20px;
+    display: flex;
+    align-items: center;
 }
 .seus-quizzes-mostrar-quizdiv{
     box-sizing: border-box;

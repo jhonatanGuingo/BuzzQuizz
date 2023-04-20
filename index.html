@@ -27,6 +27,11 @@
                 <div id="seus_quizzes_mostrar" class="seus-quizzes-mostrar">
                     <div class="seus-quizzes-mostrar-titulo">
                         <span>Seus quizzes</span>
+
+                        <button class="botao-criar-quizz" onclick=" altCriarQuizz() ">
+                            <ion-icon class="botao" name="add-circle"></ion-icon>
+                        </button>    
+
                     </div>
                     <div class="seus-quizzes-mostrar-conteudo">
                         <div class="seus-quizzes-mostrar-quizdiv" style="background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url('os-simpsons.jpg');">
@@ -75,7 +80,14 @@
         <!-- pagina quiz -->
         <div class="pagina-quiz"></div>
         <!-- pagina criação quiz -->
-        <div id="pag_criar_quiz" class="pagina-criar-quiz"></div>
+        <div id="pag_criar_quiz" class="pagina-criar-quizz">
+            <div class="info-do-quizz esconder">teste</div>
+            <div class="perguntas-do-quizz esconder"></div>
+            <div class="niveis-do-quizz esconder"></div>
+            <div class="sucesso-do-quizz esconder"></div>
+        </div>
+
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="./scripts/script_pag_inicial.js"></script>
         <script src="./scripts/script_alterar_pags.js"></script>
