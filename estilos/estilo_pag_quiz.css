@@ -1,6 +1,6 @@
 .img-quizz-topo {
     width: 1440px; /* width of container */
-    height: 227px; /* height of container */
+    height: 100%; /* height of container */
     object-fit: cover;
     z-index: 1;
     opacity: 60%;
@@ -85,8 +85,8 @@
     height: 60%;
 }
 .filtro {
-    background-color: #000000;
-    opacity: 90%;
+    background: rgb(0, 0, 0, 0.9);
+    height: 227px;
     
 }
 
