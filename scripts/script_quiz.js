@@ -34,22 +34,22 @@ async function verificar_resposta(){
         let fimlast_create_span = document.createElement("span");
         let style_background_line = "background: rgb(255, 50, 50);";
         let rights = Math.round((right_answers/n_questions)*100);
-        console.log(levels_quiz);
+        let title_level = "Insuficiente";
+        let image_level = "https://media.istockphoto.com/id/1131230925/pt/vetorial/check-marks-red-cross-icon-simple-vector.jpg?s=612x612&w=0&k=20&c=HXuSsONpZnLZ0jlCWX83C0eOrGcfYvUb60-FpabG2f4=";
+        let text_level = "Você não conseguiu se encaixar em nenhum nível :(";
         for (let i = 0; i < levels_quiz.length; i++){
             let min_value = levels_quiz[i].minValue;
-            if (rights < min_value){
-                let title_level = levels_quiz[i-1].title;
-                let image_level = levels_quiz[i-1].image;
-                let text_level = levels_quiz[i-1].text;
+            if (rights < min_value && i >= 1){
+                title_level = levels_quiz[i-1].title;
+                image_level = levels_quiz[i-1].image;
+                text_level = levels_quiz[i-1].text;
                 break;
             }
-        }
-    }
-    if (question_box != perguntas_quiz.lastChild){
-        for (let c = 0; c < perguntas_quiz.children.length; c++){
-            if (perguntas_quiz.children[c] == question_box){
-                await sleep(2000);
-                perguntas_quiz.children[c+1].scrollIntoView({ behavior:"smooth", block:"start", inline:"start"});
+            else if(i + 1 == levels_quiz.length){
+                title_level = levels_quiz[i].title;
+                image_level = levels_quiz[i].image;
+                text_level = levels_quiz[i].text;
+                break;
             }
         }
         fimtitulo_create_p.innerHTML = title_level;
@@ -59,13 +59,32 @@ async function verificar_resposta(){
         fim_create_div.appendChild(fimtitulo_create_div);
         fim_create_div.classList.add("conteudo-quizz");
         fimlast_create_img.setAttribute("src", image_level);
-        fimlast_create_span.innerHTMl = text_level;
+        fimlast_create_img.classList.add("img-final");
+        fimlast_create_span.innerHTML = text_level.replace(/"/g, '');
+        fimlast_create_span.setAttribute("style", "color: rgb(0, 0, 0);width: 50%;")
         fimlast_create_div.appendChild(fimlast_create_img);
         fimlast_create_div.appendChild(fimlast_create_span);
+        fimlast_create_div.classList.add("final-lastdiv");
         fim_create_div.append(fimlast_create_div);
         document.getElementById("perguntas_quiz").appendChild(fim_create_div);
-        console.log(levels_quiz);
-        console.log(rights);
+        // add botões
+        let fim_restart_btn = document.createElement("button");
+        let fim_home_btn = document.createElement("button");
+        fim_restart_btn.innerHTML = "Restart Quizz";
+        fim_home_btn.innerHTML = "Home";
+        fim_restart_btn.setAttribute("onclick", "alt_quiz_quiz()");
+        fim_restart_btn.setAttribute("style", "padding: 10px 30px;background-color: rgb(255, 50, 50);border-radius: 20px; color: rgb(255, 255, 255); margin:0px 0px 10px;")
+        fim_home_btn.setAttribute("onclick", "alt_quiz_home()");
+        document.getElementById("perguntas_quiz").appendChild(fim_restart_btn);
+        document.getElementById("perguntas_quiz").appendChild(fim_home_btn);
+    }
+    if (question_box != perguntas_quiz.lastChild){
+        for (let c = 0; c < perguntas_quiz.children.length; c++){
+            if (perguntas_quiz.children[c] == question_box){
+                await sleep(2000);
+                perguntas_quiz.children[c+1].scrollIntoView({ behavior:"smooth", block:"start", inline:"center"});
+            }
+        }
     }
     for (let c = 0; c < perguntas_quiz.children.length; c++){
         if (perguntas_quiz.children[c] == question_box){

@@ -1,6 +1,8 @@
 let n_questions = 0;
 let levels_quiz = "";
 let idAnterior = '';
+let quiz_id = 0;
+let a = 0;
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
     let=pagInicial = document.getElementById("pag_inicial"); 
@@ -91,8 +93,11 @@ function acessarQuizz(){
 }
 
 function alt_paginic_quiz(){
-    let id = event.target.id;
-    let send = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/" + id);
+    if (a == 0){
+        let id = event.target.id;
+        quiz_id = id;
+    }
+    let send = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/" + quiz_id);
     send.then(sucess);
     send.catch(error);
     function sucess(response){
@@ -125,6 +130,9 @@ function alt_paginic_quiz(){
             img_opcoes_create_div.classList.add("img-opcoes-quizz");
             // Cria a div geral para o conteúdo da pergunta, depois insere o título da pergunta numa div e esta dentro da div geral
             pergunta_quiz_create_p.innerHTML = titulo_question;
+            if (color_question == "rgb(255, 255, 255)" || color_question == "#FFFFFF"){
+                pergunta_quiz_create_p.setAttribute("style", "color: rgb(0, 0, 0);");
+            }
             pergunta_quiz_create_div.classList.add("pergunta-quizz");
             pergunta_quiz_create_div.setAttribute("style", style_background_line);
             pergunta_quiz_create_div.appendChild(pergunta_quiz_create_p);
@@ -163,4 +171,14 @@ function alt_paginic_quiz(){
     function error(response){
         console.log(response.status);
     }
+}
+
+function alt_quiz_home(){
+    window.location.reload();
+}
+
+function alt_quiz_quiz(){
+    a = 1;
+    document.getElementById("perguntas_quiz").innerHTML = "";
+    alt_paginic_quiz();
 }

@@ -1,7 +1,6 @@
 let token_api = "Ig05OI8F18Lp90ZDISfjWMt8";
 localStorage.setItem("ids_quizzes_criados", "[]");
 let user_quizzes = JSON.parse(localStorage.getItem("ids_quizzes_criados"));
-console.log(user_quizzes);
 
 atualizar_quizzes();
 

@@ -84,14 +84,13 @@
 }
 .opcoes img {
     width: inherit;
-    height: auto;
+    height: 60%;
 }
 
 
 .final_quiz {
     box-sizing: border-box;
     display: flex;
-    
     align-items: center;
     flex-direction: column;
     width: 759px;
@@ -168,4 +167,15 @@ button{
 
 .display_none {
     display: none;
+}
+.img-final{
+    width: 48%;
+}
+.final-lastdiv{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0px 0px 0px;
 }
