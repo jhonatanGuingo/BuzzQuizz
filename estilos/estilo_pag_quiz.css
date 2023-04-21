@@ -3,14 +3,14 @@
     height: 227px; /* height of container */
     object-fit: cover;
     z-index: 1;
-    opacity: 60%;
-    background: no-repeat;
+    
 }
 .header-quizz{
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+
 }
 .header-quizz span {
     font-family: 'Roboto', sans-serif;
@@ -86,8 +86,9 @@
 }
 .filtro {
     background-color: #000000;
-    opacity: 90%;
+    opacity: 80%;
     
+   
 }
 
 .final_quiz {
