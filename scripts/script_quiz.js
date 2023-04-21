@@ -41,5 +41,15 @@ async function verificar_resposta(){
 
 function finalScreen(){
     let telaFinal = document.querySelector(".final_quiz");
-    telaFinal.classList.remove("display_none");
+    telaFinal.classList.remove("esconder");
+}
+
+function voltarTelaPrincipal(){
+    document.getElementById("pag_inicial").style.display = "flex";
+    document.getElementById("pag_quiz").style.display = "none";
+    window.location.reload();
+}
+
+function reiniciarQuiz(){
+
 }
