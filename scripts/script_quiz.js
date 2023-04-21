@@ -44,6 +44,14 @@ async function verificar_resposta(){
                 break;
             }
         }
+    }
+    if (question_box != perguntas_quiz.lastChild){
+        for (let c = 0; c < perguntas_quiz.children.length; c++){
+            if (perguntas_quiz.children[c] == question_box){
+                await sleep(2000);
+                perguntas_quiz.children[c+1].scrollIntoView({ behavior:"smooth", block:"start", inline:"start"});
+            }
+        }
         fimtitulo_create_p.innerHTML = title_level;
         fimtitulo_create_div.classList.add("pergunta-quizz");
         fimtitulo_create_div.setAttribute("style", style_background_line);

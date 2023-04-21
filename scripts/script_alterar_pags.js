@@ -1,15 +1,22 @@
 let n_questions = 0;
 let levels_quiz = "";
+let idAnterior = '';
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
     let=pagInicial = document.getElementById("pag_inicial"); 
-    console.log(pagInicial);
     pagInicial.classList.add('esconder');
-    console.log(pagInicial);
     let info = document.getElementById('info_do_quizz');
-    console.log(info);
+    info.innerHTML+=`
+    <h1>Comece pelo começo</h1>
+    <div class="infos">
+        <input type="text" placeholder="Título do seu quizz">
+        <input type="text" placeholder="URL da imagem do seu quizz">
+        <input type="text" placeholder="Quantidade de perguntas do quizz">
+        <input type="text" placeholder="Quantidade de níveis do quizz">
+    </div>
+    <button onclick ="altCriarPerguntas()" class="prosseguir">Prosseguir pra criar perguntas</button>
+    `
     info.classList.add('centralizar');
-    console.log(info);
 }
 //muda para tela de criação de perguntas
 function altCriarPerguntas(){
@@ -17,7 +24,70 @@ function altCriarPerguntas(){
     criarQuizz.classList.remove('centralizar');
     criarQuizz.classList.add('esconder');
     let perguntas = document.getElementById('perguntas_do_quizz');
-    perguntas.classList.remove('esconder');
+    perguntas.innerHTML+=`
+    <h1>Crie suas perguntas</h1>
+    <div class="pergunta">
+        <p>Pergunta 1</p>
+        <input type="text" placeholder="Texto da pergunta">
+        <input type="text" placeholder="Cor de fundo da pergunta">
+        <p>Resposta Correta</p>
+        <input type="text" placeholder="Resposta correta">
+        <input type="text" placeholder="URL da imagem">
+        <p>Respostas Incorreta</p>
+        <input type="text" placeholder="Resposta incorreta 1">
+        <input type="text" placeholder="URL da imagem 1">
+        <input type="text" placeholder="Resposta incorreta 2">
+        <input type="text" placeholder="URL da imagem 2">
+        <input type="text" placeholder="Resposta incorreta 3">
+        <input type="text" placeholder="URL da imagem 3">
+    </div>
+    <button onclick ="altCriarNiveis()" class="prosseguir">Prosseguir pra criar níveis</button>
+    `
+    perguntas.classList.add('centralizar');
+}
+//muda para tela de criação de níveis
+function altCriarNiveis(){
+    let=perguntas = document.getElementById('perguntas_do_quizz') ;
+    perguntas.classList.remove('centralizar');
+    perguntas.classList.add('esconder');
+    let niveis = document.getElementById('niveis_do_quizz');
+    niveis.innerHTML+=`
+    <div class="nivel">
+    <p>Nível 1</p>
+    <input type="text" placeholder="Título do nível">
+    <input type="text" placeholder="% de acerto mínima">
+    <input type="text" placeholder="URL da imagem do nível">
+    <input type="text" placeholder="Descrição do nível">
+    </div>
+    <button onclick ="altFinalizarQuizz()" class="prosseguir">Finalizar Quizz</button>
+    `
+    niveis.classList.add('centralizar');
+}
+//muda para tela de finalização da criação de um quizz
+function altFinalizarQuizz(){
+    let=niveis = document.getElementById('niveis_do_quizz') ;
+    niveis.classList.remove('centralizar');
+    niveis.classList.add('esconder');
+    let finalizar = document.getElementById('finalizar_quizz');
+    finalizar.innerHTML+=`
+    <p>Seu quizz está pronto!</p>
+    <img src="https://uploads.jovemnerd.com.br/wp-content/uploads/2023/03/naruto_episodios_ineditos__3kf0w13t5-1210x544.jpg">
+    <h3>nome</h3>
+    <button onclick ="acessarQuizz()" class="prosseguir-finalizar">Acessar Quizz</button>
+    <div onclick ="voltarPagInicial()" >Voltar pra home</div>
+    `
+    finalizar.classList.add('centralizar');
+}
+//retorna para tela inicial
+function voltarPagInicial(){
+    let=pagInicial = document.getElementById("pag_inicial");
+    pagInicial.classList.remove('esconder');
+    let finalizar = document.getElementById('finalizar_quizz');
+    finalizar.classList.remove('centralizar');
+}
+//acessa o quiz que acabou de ser criado 
+function acessarQuizz(){
+    alert("a fazer");
 }
 
 function alt_paginic_quiz(){
