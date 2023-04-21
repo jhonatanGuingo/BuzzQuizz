@@ -35,7 +35,8 @@
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
-    border-radius: 5px; 
+    border-radius: 5px;
+    font-size: 19px;
 }
 .infos :nth-child(1){
     margin-top: 21px;
@@ -58,8 +59,8 @@ input::placeholder {
     padding-left: 23px;
     border: 0px;
   }
-  .prosseguir-criar-perguntas{
-    margin-top: 85px;
+  .prosseguir{
+    margin: 81px 0px;
     background-color: #EC362D;
     width: 369px;
     height: 54px;
@@ -84,7 +85,7 @@ input::placeholder {
     flex-direction: column;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
     width: 600px;
-    height: 825px;
+    height: auto;
     align-items: center;
 }
 .pergunta > p{
@@ -98,4 +99,93 @@ input::placeholder {
 }
 .pergunta :nth-child(3){
     margin-top: 14px;
+}
+.pergunta :nth-child(6){
+    margin-top: 14px;
+}
+.pergunta :nth-child(9){
+    margin-top: 14px;
+}
+.pergunta :nth-child(10){
+    margin-top: 34px;
+}
+.pergunta :nth-child(11){
+    margin-top: 14px;
+}
+.pergunta :nth-child(12){
+    margin-top: 34px;
+}
+.pergunta :nth-child(13){
+    margin-top: 14px;
+    margin-bottom: 27px;
+}
+.nivel{
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+    width: 600px;
+    height: auto;
+    align-items: center;
+}
+.nivel > p{
+    width: 100%;
+    margin-left: 35px;
+    font-family: roboto;
+    font-weight: 700;
+    line-height: 23.44px;
+    font-size: 20px; 
+}
+.nivel :nth-child(3){
+    margin-top: 14px;
+}
+.nivel :nth-child(4){
+    margin-top: 14px;
+}
+.nivel :nth-child(5){
+    margin: 14px 0px;
+}
+.prosseguir-finalizar{
+    margin-top: 81px;
+    background-color: #EC362D;
+    width: 369px;
+    height: 54px;
+    border-radius: 15px;
+    border: 0px;
+    color: white;
+    font-family: roboto;
+    font-size: 21px;
+  }
+  .finalizar>p{
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-family: roboto;
+    line-height: 26.95px;
+    font-size: 23px;
+    margin-top: 70px;
+  }
+.finalizar>img{
+    height: 266px;
+    width: 500px;
+    object-fit: cover;
+    position:relative;
+    z-index: 0;
+}
+.finalizar>div{
+    color: #818181;
+    font-family: roboto;
+    font-size: 21px;
+    margin-top: 20px;
+}
+.finalizar>h3{
+    position:fixed;
+    font-weight: 400;
+    font-family: roboto;
+    line-height: 26.95px;
+    font-size: 23px;
+    color: white;
+    top: 380px;
+    left: 540px;
+    z-index: 1;
 }
