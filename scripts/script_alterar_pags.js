@@ -1,4 +1,5 @@
 let n_questions = 0;
+let idAnterior = '';
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
     let=pagInicial = document.getElementById("pag_inicial"); 

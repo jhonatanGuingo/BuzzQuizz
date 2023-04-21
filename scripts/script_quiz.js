@@ -27,6 +27,7 @@ async function verificar_resposta(){
     }
     if (right_answers + wrong_answers == n_questions){
         console.log("fim");
+        finalScreen();
     }
     if (question_box != perguntas_quiz.lastChild){
         for (let c = 0; c < perguntas_quiz.children.length; c++){
@@ -36,4 +37,19 @@ async function verificar_resposta(){
             }
         }
     }
+}
+
+function finalScreen(){
+    let telaFinal = document.querySelector(".final_quiz");
+    telaFinal.classList.remove("esconder");
+}
+
+function voltarTelaPrincipal(){
+    document.getElementById("pag_inicial").style.display = "flex";
+    document.getElementById("pag_quiz").style.display = "none";
+    window.location.reload();
+}
+
+function reiniciarQuiz(){
+
 }
