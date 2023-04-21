@@ -87,7 +87,7 @@
 .filtro {
     background: rgb(0, 0, 0, 0.9);
     height: 227px;
-    
+    width: 100%;
 }
 
 .final_quiz {
