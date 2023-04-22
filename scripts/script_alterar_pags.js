@@ -190,14 +190,17 @@ function alt_paginic_quiz(){
         levels_quiz = response.data.levels;
         let title_geral_create_span = document.createElement("span");
         let img_geral_create_img = document.createElement("img");
+        let div_img_create_div = document.createElement("div");
         // Formatação da imagem no topo
         img_geral_create_img.classList.add("img-quizz-topo");
         img_geral_create_img.setAttribute("src", image_quiz);
         img_geral_create_img.setAttribute("alt", "");
-        document.getElementById("header_quiz").appendChild(img_geral_create_img);
+        div_img_create_div.appendChild(img_geral_create_img);
         // Formatação do título no topo
         title_geral_create_span.innerHTML = titulo_quiz;
-        document.getElementById("header_quiz").appendChild(title_geral_create_span);
+        div_img_create_div.appendChild(title_geral_create_span);
+        div_img_create_div.classList.add("filtro");
+        document.getElementById("header_quiz").appendChild(div_img_create_div);
         for (let a = 0; a < questions_quiz.length; a++){
             n_questions = n_questions + 1;
             let titulo_question = questions_quiz[a].title;

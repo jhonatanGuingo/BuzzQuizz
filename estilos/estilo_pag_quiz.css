@@ -1,12 +1,10 @@
 .img-quizz-topo {
     width: 1440px; /* width of container */
-    height: 227px; /* height of container */
+    height: 100%; /* height of container */
     object-fit: cover;
     z-index: 1;
-   
+    opacity: 60%;
     background: no-repeat;
-
-
 }
 .header-quizz{
     display: flex;
@@ -86,7 +84,11 @@
     width: inherit;
     height: 60%;
 }
-
+.filtro {
+    background: rgb(0, 0, 0, 0.9);
+    height: 227px;
+    width: 100%;
+}
 
 .final_quiz {
     box-sizing: border-box;
