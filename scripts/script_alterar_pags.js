@@ -3,6 +3,35 @@ let levels_quiz = "";
 let idAnterior = '';
 let quiz_id = 0;
 let a = 0;
+let numPerguntas=null;
+let numNiveis=null;
+let perguntasCriadas=[];
+let niveisCriados=[];
+
+//verifica validações
+function validacoes(){
+    //pegando o numero de perguntas digitado
+    let perguntas=document.querySelector('.numPerguntas');
+    numPerguntas = perguntas.value;
+
+    //pegando o numero de niveis digitado
+    let niveis=document.querySelector('.numNiveis');
+    numNiveis = niveis.value;
+
+    //validar...
+}
+
+//oculta as informações ao clicar
+function colapsarPerguntas(x){
+    let conteudo = x.parentNode;
+    let colapsar = conteudo.querySelector('.colapsarPerguntas:nth-child(2)');
+    colapsar.classList.toggle('esconder');
+}
+function colapsarNiveis(x){
+    let conteudo = x.parentNode;
+    let colapsar = conteudo.querySelector('.colapsarNiveis:nth-child(2)');
+    colapsar.classList.toggle('esconder');
+}
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
     let=pagInicial = document.getElementById("pag_inicial"); 
@@ -11,10 +40,10 @@ function altCriarQuizz(){
     info.innerHTML+=`
     <h1>Comece pelo começo</h1>
     <div class="infos">
-        <input type="text" placeholder="Título do seu quizz">
-        <input type="text" placeholder="URL da imagem do seu quizz">
-        <input type="text" placeholder="Quantidade de perguntas do quizz">
-        <input type="text" placeholder="Quantidade de níveis do quizz">
+        <input class="titulo" type="text" placeholder="Título do seu quizz">
+        <input class="imagem" type="text" placeholder="URL da imagem do seu quizz">
+        <input class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
+        <input class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
     </div>
     <button onclick ="altCriarPerguntas()" class="prosseguir">Prosseguir pra criar perguntas</button>
     `
@@ -22,28 +51,60 @@ function altCriarQuizz(){
 }
 //muda para tela de criação de perguntas
 function altCriarPerguntas(){
+    validacoes();
     let=criarQuizz = document.getElementById('info_do_quizz') ;
     criarQuizz.classList.remove('centralizar');
     criarQuizz.classList.add('esconder');
     let perguntas = document.getElementById('perguntas_do_quizz');
+    for(let i=0; i<numPerguntas; i++){
+        if(i==0){
+            perguntasCriadas.push(`
+        <div class="pergunta">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}</p>
+            <div class="colapsarPerguntas">
+            <input type="text" placeholder="Texto da pergunta">
+            <input type="text" placeholder="Cor de fundo da pergunta">
+            <p>Resposta Correta</p>
+            <input type="text" placeholder="Resposta correta">
+            <input type="text" placeholder="URL da imagem">
+            <p>Respostas Incorretas</p>
+            <input type="text" placeholder="Resposta incorreta 1">
+            <input type="text" placeholder="URL da imagem 1">
+            <input type="text" placeholder="Resposta incorreta 2">
+            <input type="text" placeholder="URL da imagem 2">
+            <input type="text" placeholder="Resposta incorreta 3">
+            <input type="text" placeholder="URL da imagem 3">
+            </div>
+        </div>
+        `);
+        }else{
+            perguntasCriadas.push(`
+        <div class="pergunta">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}</p>
+            <div class="colapsarPerguntas esconder">
+            <input type="text" placeholder="Texto da pergunta">
+            <input type="text" placeholder="Cor de fundo da pergunta">
+            <p>Resposta Correta</p>
+            <input type="text" placeholder="Resposta correta">
+            <input type="text" placeholder="URL da imagem">
+            <p>Respostas Incorretas</p>
+            <input type="text" placeholder="Resposta incorreta 1">
+            <input type="text" placeholder="URL da imagem 1">
+            <input type="text" placeholder="Resposta incorreta 2">
+            <input type="text" placeholder="URL da imagem 2">
+            <input type="text" placeholder="Resposta incorreta 3">
+            <input type="text" placeholder="URL da imagem 3">
+            </div>
+        </div>
+        `);
+        }
+    }
+
+    for(let j=0; j<perguntasCriadas.length; j++){
+        perguntas.innerHTML+=perguntasCriadas[j];
+    }
     perguntas.innerHTML+=`
-    <h1>Crie suas perguntas</h1>
-    <div class="pergunta">
-        <p>Pergunta 1</p>
-        <input type="text" placeholder="Texto da pergunta">
-        <input type="text" placeholder="Cor de fundo da pergunta">
-        <p>Resposta Correta</p>
-        <input type="text" placeholder="Resposta correta">
-        <input type="text" placeholder="URL da imagem">
-        <p>Respostas Incorreta</p>
-        <input type="text" placeholder="Resposta incorreta 1">
-        <input type="text" placeholder="URL da imagem 1">
-        <input type="text" placeholder="Resposta incorreta 2">
-        <input type="text" placeholder="URL da imagem 2">
-        <input type="text" placeholder="Resposta incorreta 3">
-        <input type="text" placeholder="URL da imagem 3">
-    </div>
-    <button onclick ="altCriarNiveis()" class="prosseguir">Prosseguir pra criar níveis</button>
+    <button onclick ="altCriarNiveis()" class="prosseguir">Prosseguir pra criar níveis</button> 
     `
     perguntas.classList.add('centralizar');
 }
@@ -53,14 +114,38 @@ function altCriarNiveis(){
     perguntas.classList.remove('centralizar');
     perguntas.classList.add('esconder');
     let niveis = document.getElementById('niveis_do_quizz');
+    for (let i=0; i<numNiveis; i++){
+        if (i==0){
+            niveisCriados.push(`
+        <div class="nivel">
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}</p>
+        <div class="colapsarNiveis">
+        <input type="text" placeholder="Título do nível">
+        <input type="text" placeholder="% de acerto mínima">
+        <input type="text" placeholder="URL da imagem do nível">
+        <input type="text" placeholder="Descrição do nível">
+        </div>
+        </div>
+        `);
+        }else{
+            niveisCriados.push(`
+        <div class="nivel">
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}</p>
+        <div class="colapsarNiveis esconder">
+        <input type="text" placeholder="Título do nível">
+        <input type="text" placeholder="% de acerto mínima">
+        <input type="text" placeholder="URL da imagem do nível">
+        <input type="text" placeholder="Descrição do nível">
+        </div>
+        </div>
+        `);
+        }
+    }
+    for(let j=0; j<niveisCriados.length; j++){
+        niveis.innerHTML+=niveisCriados[j];
+    }
+
     niveis.innerHTML+=`
-    <div class="nivel">
-    <p>Nível 1</p>
-    <input type="text" placeholder="Título do nível">
-    <input type="text" placeholder="% de acerto mínima">
-    <input type="text" placeholder="URL da imagem do nível">
-    <input type="text" placeholder="Descrição do nível">
-    </div>
     <button onclick ="altFinalizarQuizz()" class="prosseguir">Finalizar Quizz</button>
     `
     niveis.classList.add('centralizar');
@@ -82,10 +167,7 @@ function altFinalizarQuizz(){
 }
 //retorna para tela inicial
 function voltarPagInicial(){
-    let=pagInicial = document.getElementById("pag_inicial");
-    pagInicial.classList.remove('esconder');
-    let finalizar = document.getElementById('finalizar_quizz');
-    finalizar.classList.remove('centralizar');
+    location.reload(true);
 }
 //acessa o quiz que acabou de ser criado 
 function acessarQuizz(){

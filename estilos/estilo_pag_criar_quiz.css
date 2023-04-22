@@ -1,3 +1,15 @@
+.colapsarPerguntas{
+    display: flex;
+    flex-direction: column;
+}
+.colapsarNiveis{
+    display: flex;
+    flex-direction: column;
+}
+.colapsar.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
 .esconder{
     display: none;
 }
@@ -95,27 +107,33 @@ input::placeholder {
     font-weight: 700;
     line-height: 23.44px;
     font-size: 20px;
-    
 }
-.pergunta :nth-child(3){
+.colapsarPerguntas > p{
+    width: 100%;
+    font-family: roboto;
+    font-weight: 700;
+    line-height: 23.44px;
+    font-size: 20px;
+}
+.pergunta :nth-child(2){
     margin-top: 14px;
 }
-.pergunta :nth-child(6){
+.pergunta :nth-child(5){
+    margin-top: 14px;
+}
+.pergunta :nth-child(8){
     margin-top: 14px;
 }
 .pergunta :nth-child(9){
-    margin-top: 14px;
+    margin-top: 34px;
 }
 .pergunta :nth-child(10){
-    margin-top: 34px;
-}
-.pergunta :nth-child(11){
     margin-top: 14px;
 }
-.pergunta :nth-child(12){
+.pergunta :nth-child(11){
     margin-top: 34px;
 }
-.pergunta :nth-child(13){
+.pergunta :nth-child(12){
     margin-top: 14px;
     margin-bottom: 27px;
 }
@@ -136,14 +154,15 @@ input::placeholder {
     line-height: 23.44px;
     font-size: 20px; 
 }
+.nivel :nth-child(2){
+    margin-top: 14px;
+}
 .nivel :nth-child(3){
     margin-top: 14px;
 }
 .nivel :nth-child(4){
     margin-top: 14px;
-}
-.nivel :nth-child(5){
-    margin: 14px 0px;
+    margin-bottom: 27px;
 }
 .prosseguir-finalizar{
     margin-top: 81px;
