@@ -3,22 +3,48 @@ let levels_quiz = "";
 let idAnterior = '';
 let quiz_id = 0;
 let a = 0;
+let urlTitulo = '';
+let titulo='';
 let numPerguntas=null;
 let numNiveis=null;
 let perguntasCriadas=[];
 let niveisCriados=[];
 
+//valida URL
+function validarURL(url) {
+    var regex = /^(ftp|http|https):\/\/[^ "]+$/;
+    return regex.test(url);
+  }
+
 //verifica validações
 function validacoes(){
+    //pegando o título digitado
+    let tit=document.querySelector('.titulo');
+    titulo = tit.value;
+    let caracteres=titulo.length;
+
+    //pegando a URL digitada
+    let url=document.querySelector('.urlTitulo');
+    urlTitulo = url.value;
+    console.log(urlTitulo);
+    let urlValida = validarURL(urlTitulo);
+    console.log(urlValida);
+
     //pegando o numero de perguntas digitado
     let perguntas=document.querySelector('.numPerguntas');
     numPerguntas = perguntas.value;
-
+    
     //pegando o numero de niveis digitado
     let niveis=document.querySelector('.numNiveis');
     numNiveis = niveis.value;
 
+
     //validar...
+    if ((numPerguntas<3) || (numNiveis<2) || (caracteres<20 || caracteres>65) || (urlValida===false)){
+        alert("Dados incorretos, por favor verifique se: \n   Todos os campos estão preenchidos,\n   O título tem entre 20 e 65 caracteres,\n   A URL é válida,\n   A quantidade de perguntas é no mínimo 3,\n   A quantidade de níveis é no mínimo 2");
+    }else{
+        altCriarPerguntas();
+    }
 }
 
 //oculta as informações ao clicar
@@ -53,17 +79,16 @@ function altCriarQuizz(){
     <h1>Comece pelo começo</h1>
     <div class="infos">
         <input class="titulo" type="text" placeholder="Título do seu quizz">
-        <input class="imagem" type="text" placeholder="URL da imagem do seu quizz">
+        <input class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz">
         <input class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
         <input class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
     </div>
-    <button onclick ="altCriarPerguntas()" class="prosseguir">Prosseguir pra criar perguntas</button>
+    <button onclick ="validacoes()" class="prosseguir">Prosseguir pra criar perguntas</button>
     `
     info.classList.add('centralizar');
 }
 //muda para tela de criação de perguntas
 function altCriarPerguntas(){
-    validacoes();
     let=criarQuizz = document.getElementById('info_do_quizz') ;
     criarQuizz.classList.remove('centralizar');
     criarQuizz.classList.add('esconder');
