@@ -91,6 +91,15 @@ input::placeholder {
     font-size: 23px;
     margin-top: 70px;
   }
+  .pagina-criar-quizz :nth-child(3) > h1{
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-family: roboto;
+    line-height: 26.95px;
+    font-size: 23px;
+    margin-top: 70px;
+  }
 .pergunta{
     margin-top: 27px;
     display: flex;
@@ -101,12 +110,17 @@ input::placeholder {
     align-items: center;
 }
 .pergunta > p{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     margin-left: 35px;
     font-family: roboto;
     font-weight: 700;
     line-height: 23.44px;
     font-size: 20px;
+}
+.pergunta > p > img{
+    margin-right: 30px;
 }
 .colapsarPerguntas > p{
     width: 100%;
@@ -147,12 +161,17 @@ input::placeholder {
     align-items: center;
 }
 .nivel > p{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     margin-left: 35px;
     font-family: roboto;
     font-weight: 700;
     line-height: 23.44px;
     font-size: 20px; 
+}
+.nivel > p > img{
+    margin-right: 30px;
 }
 .nivel :nth-child(2){
     margin-top: 14px;

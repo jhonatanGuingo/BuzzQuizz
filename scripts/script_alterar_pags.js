@@ -23,14 +23,26 @@ function validacoes(){
 
 //oculta as informações ao clicar
 function colapsarPerguntas(x){
+    let icone = x.querySelector('img');
     let conteudo = x.parentNode;
     let colapsar = conteudo.querySelector('.colapsarPerguntas:nth-child(2)');
     colapsar.classList.toggle('esconder');
+    if (colapsar.classList.contains('esconder')){
+        icone.classList.remove('esconder');
+    }else{
+        icone.classList.add('esconder');
+    }
 }
 function colapsarNiveis(x){
+    let icone = x.querySelector('img');
     let conteudo = x.parentNode;
     let colapsar = conteudo.querySelector('.colapsarNiveis:nth-child(2)');
     colapsar.classList.toggle('esconder');
+    if (colapsar.classList.contains('esconder')){
+        icone.classList.remove('esconder');
+    }else{
+        icone.classList.add('esconder');
+    }
 }
 //muda para a tela de criação de quizz
 function altCriarQuizz(){
@@ -60,7 +72,7 @@ function altCriarPerguntas(){
         if(i==0){
             perguntasCriadas.push(`
         <div class="pergunta">
-            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}</p>
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas">
             <input type="text" placeholder="Texto da pergunta">
             <input type="text" placeholder="Cor de fundo da pergunta">
@@ -80,7 +92,7 @@ function altCriarPerguntas(){
         }else{
             perguntasCriadas.push(`
         <div class="pergunta">
-            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}</p>
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas esconder">
             <input type="text" placeholder="Texto da pergunta">
             <input type="text" placeholder="Cor de fundo da pergunta">
@@ -118,7 +130,7 @@ function altCriarNiveis(){
         if (i==0){
             niveisCriados.push(`
         <div class="nivel">
-        <p onclick="colapsarNiveis(this)">Nível ${i+1}</p>
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis">
         <input type="text" placeholder="Título do nível">
         <input type="text" placeholder="% de acerto mínima">
@@ -130,7 +142,7 @@ function altCriarNiveis(){
         }else{
             niveisCriados.push(`
         <div class="nivel">
-        <p onclick="colapsarNiveis(this)">Nível ${i+1}</p>
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis esconder">
         <input type="text" placeholder="Título do nível">
         <input type="text" placeholder="% de acerto mínima">
