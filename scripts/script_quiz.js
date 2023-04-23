@@ -93,3 +93,4 @@ async function verificar_resposta(){
         }
     }
 }
+

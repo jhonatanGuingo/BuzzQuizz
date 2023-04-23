@@ -1,4 +1,5 @@
 .img-quizz-topo {
+    display: flex;
     width: 1440px; /* width of container */
     height: 100%; /* height of container */
     object-fit: cover;
@@ -12,9 +13,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
-
+    
 }
 .header-quizz span {
+    display: flex;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -31,6 +33,7 @@
     margin-top: 42px;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .conteudo-quizz {
     box-sizing: border-box;
@@ -87,6 +90,7 @@
     height: 60%;
 }
 .filtro {
+    display: flex;
     background: rgb(0, 0, 0, 0.9);
     height: 227px;
     width: 100%;
@@ -182,4 +186,14 @@ button{
     justify-content: space-between;
     width: 100%;
     margin: 10px 0px 0px 0px;
+}
+
+
+@media(max-width: 900px){
+ .container-quizz .opcoes .img-quizz-topo .restart button .final_quiz .conteudo-quizz {
+  width: 100%;
+
+}
+
+
 }
