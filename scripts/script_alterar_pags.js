@@ -10,13 +10,168 @@ let numNiveis=null;
 let perguntasCriadas=[];
 let niveisCriados=[];
 
-//valida URL
-function validarURL(url) {
-    var regex = /^(ftp|http|https):\/\/[^ "]+$/;
-    return regex.test(url);
-  }
+var perguntas = [];
+var respostas = [];
 
-//verifica validações
+//mostra um alert com possíveis erros da página em questão
+function alertErro(erro) {
+    if (erro === "dadosBasicos") {
+        alert(`Dados incorretos, por favor verifique se:\n
+        Todos os campos estão preenchidos,
+        O título tem entre 20 e 65 caracteres,
+        A URL é válida,
+        A quantidade de perguntas é no mínimo 3,
+        A quantidade de níveis é no mínimo 2`);
+    }
+    else if (erro === "criarPerguntas") {
+        alert(`Dados incorretos, por favor verifique se:\n
+        Todos os campos estão preenchidos,
+        O título tem no mínimo 20 caracteres,
+        É uma cor em hexadecimal,
+        Tem pelo menos 1 resposta correta e 1 errada por pergunta,
+        As respostas correspondem com as URL`);
+    }
+    else if (erro === "criarNiveis") {
+        alert(`Dados incorretos, por favor verifique se:\n
+        Todos os campos estão preenchidos,
+        O título tem no mínimo 10 caracteres,
+        A porcentagem está entre 0 e 100,
+        Tem um nível 0,
+        A descrição tem no mínimo 30 caracteres`);
+    }
+    else {
+        alert("Sentimos muito, não foi possível criar o quizz.");
+        colocarTelaCarregando();
+        buscarQuizzes();
+    }  
+}
+
+//valida URL
+    function validarURL(url) {
+      var regex = /^(ftp|http|https):\/\/[^ "]+$/;
+      return regex.test(url);
+     }
+
+//verificações gerais
+function tituloPerguntasValido (string) {
+    if (string.length >= 20) {
+        return true;
+    }
+    return false;
+}
+
+function corValida (cor) {
+    let hex = /^#[0-9A-F]{6}$/i;
+    return (hex.test(cor));
+}
+
+function respostaValida (rCorreta, r1, r2, r3) {
+    return (rCorreta !== '' && (r1 !== '' || r2 !== '' || r3 !== ''));
+}
+
+function cardValido (resposta, url) {
+    return ((resposta !== '' && url !== '') || (resposta === '' && url === ''));
+}
+function urlValida(string){
+        
+    try {
+        let url = new URL(string)
+        return true;
+    } catch(err) {
+            return false;   
+    }
+}
+
+//verifica dados das respostas
+function dadosRespostasValidos (titulo, cor, respostaCorreta, resposta1, resposta2, resposta3, URLCorreta, URL1, URL2, URL3) {
+    
+    return (tituloPerguntasValido(titulo) && corValida(cor) && respostaValida(respostaCorreta, resposta1, resposta2, resposta3)
+        && urlValida(URLCorreta) && (urlValida(URL1) || urlValida(URL2) || urlValida(URL3)) && cardValido(resposta1, URL1) 
+        && cardValido(resposta2, URL2) && cardValido(resposta3, URL3));
+}
+
+//verifica validações perguntas
+function verificarPerguntasCriadas() {
+        let perguntas = {questions: []};
+        let verificadas = 0;
+    
+        for (let i = 1; i <= numPerguntas; i++) {
+            
+            console.log(i);
+            let pergunta = document.querySelector(`.pergunta${i} .colapsarPerguntas`);
+            console.log(pergunta);
+
+            let titulo = pergunta.querySelector(".titulo").value;
+            console.log(titulo);
+            let cor = pergunta.querySelector(".cor").value;
+            let respostaCorreta = pergunta.querySelector(".respostaCorreta").value;
+            let URLCorreta = pergunta.querySelector(".urlCorreta").value;
+            let resposta1 = pergunta.querySelector(".resposta1").value;
+            let URL1 = pergunta.querySelector(".URL1").value;
+            let resposta2 = pergunta.querySelector(".resposta2").value;
+            let URL2 = pergunta.querySelector(".URL2").value;
+            let resposta3 = pergunta.querySelector(".resposta3").value;
+            let URL3 = pergunta.querySelector(".URL3").value;
+    
+            if (dadosRespostasValidos(titulo, cor, respostaCorreta, resposta1, resposta2, resposta3, URLCorreta, URL1, URL2, URL3)){
+                verificadas++;
+    
+                let rsp1 = {
+                    image: URLCorreta,
+                    text: respostaCorreta,
+                    isCorrectAnswer: true
+                }
+    
+                let rsp2 = {
+                    image: URL1,
+                    text: resposta1,
+                    isCorrectAnswer: false
+                }
+    
+                let rsp3 = {
+                    image: URL2,
+                    text: resposta2,
+                    isCorrectAnswer: false
+                }
+    
+                let rsp4 = {
+                    image: URL3,
+                    text: resposta3,
+                    isCorrectAnswer: false
+                }
+    
+                let respostas = [rsp1];
+    
+                if (rsp2.image !== '' && rsp2.text !== '') {
+                    respostas.push(rsp2);
+                }
+                if (rsp3.image !== '' && rsp3.text !== '') {
+                    respostas.push(rsp3);
+                }
+                if (rsp4.image !== '' && rsp4.text !== '') {
+                    respostas.push(rsp4);
+                }
+    
+                let perguntaArray = {
+                    answers: respostas,
+                    color: cor,
+                    title: titulo
+                };
+    
+                perguntas.questions.push(perguntaArray);
+            }
+        }
+    
+        console.log(verificadas);
+        if (verificadas == numPerguntas) {
+            altCriarNiveis();
+        } else {
+            alertErro("criarPerguntas");
+        }
+    }
+      
+
+//verifica validações informações principais
 function validacoes(){
     //pegando o título digitado
     let tit=document.querySelector('.titulo');
@@ -41,7 +196,7 @@ function validacoes(){
 
     //validar...
     if ((numPerguntas<3) || (numNiveis<2) || (caracteres<20 || caracteres>65) || (urlValida===false)){
-        alert("Dados incorretos, por favor verifique se: \n   Todos os campos estão preenchidos,\n   O título tem entre 20 e 65 caracteres,\n   A URL é válida,\n   A quantidade de perguntas é no mínimo 3,\n   A quantidade de níveis é no mínimo 2");
+        alertErro("dadosBasicos");
     }else{
         altCriarPerguntas();
     }
@@ -96,41 +251,41 @@ function altCriarPerguntas(){
     for(let i=0; i<numPerguntas; i++){
         if(i==0){
             perguntasCriadas.push(`
-        <div class="pergunta">
+        <div class="pergunta${i+1} estilo">
             <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas">
-            <input type="text" placeholder="Texto da pergunta">
-            <input type="text" placeholder="Cor de fundo da pergunta">
+            <input class="titulo" type="text" placeholder="Texto da pergunta">
+            <input class="cor" type="text" placeholder="Cor de fundo da pergunta">
             <p>Resposta Correta</p>
-            <input type="text" placeholder="Resposta correta">
-            <input type="text" placeholder="URL da imagem">
+            <input class="respostaCorreta" type="text" placeholder="Resposta correta">
+            <input class="urlCorreta" type="text" placeholder="URL da imagem">
             <p>Respostas Incorretas</p>
-            <input type="text" placeholder="Resposta incorreta 1">
-            <input type="text" placeholder="URL da imagem 1">
-            <input type="text" placeholder="Resposta incorreta 2">
-            <input type="text" placeholder="URL da imagem 2">
-            <input type="text" placeholder="Resposta incorreta 3">
-            <input type="text" placeholder="URL da imagem 3">
+            <input class="resposta1" type="text" placeholder="Resposta incorreta 1">
+            <input class="URL1" type="text" placeholder="URL da imagem 1">
+            <input class="resposta2" type="text" placeholder="Resposta incorreta 2">
+            <input class="URL2" type="text" placeholder="URL da imagem 2">
+            <input class="resposta3" type="text" placeholder="Resposta incorreta 3">
+            <input class="URL3" type="text" placeholder="URL da imagem 3">
             </div>
         </div>
         `);
         }else{
             perguntasCriadas.push(`
-        <div class="pergunta">
+         <div class="pergunta${i+1} estilo">
             <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas esconder">
-            <input type="text" placeholder="Texto da pergunta">
-            <input type="text" placeholder="Cor de fundo da pergunta">
+            <input class="titulo" type="text" placeholder="Texto da pergunta">
+            <input class="cor" type="text" placeholder="Cor de fundo da pergunta">
             <p>Resposta Correta</p>
-            <input type="text" placeholder="Resposta correta">
-            <input type="text" placeholder="URL da imagem">
+            <input class="respostaCorreta" type="text" placeholder="Resposta correta">
+            <input class="urlCorreta" type="text" placeholder="URL da imagem">
             <p>Respostas Incorretas</p>
-            <input type="text" placeholder="Resposta incorreta 1">
-            <input type="text" placeholder="URL da imagem 1">
-            <input type="text" placeholder="Resposta incorreta 2">
-            <input type="text" placeholder="URL da imagem 2">
-            <input type="text" placeholder="Resposta incorreta 3">
-            <input type="text" placeholder="URL da imagem 3">
+            <input class="resposta1" type="text" placeholder="Resposta incorreta 1">
+            <input class="URL1" type="text" placeholder="URL da imagem 1">
+            <input class="resposta2" type="text" placeholder="Resposta incorreta 2">
+            <input class="URL2" type="text" placeholder="URL da imagem 2">
+            <input class="resposta3" type="text" placeholder="Resposta incorreta 3">
+            <input class="URL3" type="text" placeholder="URL da imagem 3">
             </div>
         </div>
         `);
@@ -141,7 +296,7 @@ function altCriarPerguntas(){
         perguntas.innerHTML+=perguntasCriadas[j];
     }
     perguntas.innerHTML+=`
-    <button onclick ="altCriarNiveis()" class="prosseguir">Prosseguir pra criar níveis</button> 
+    <button onclick ="verificarPerguntasCriadas()" class="prosseguir">Prosseguir pra criar níveis</button> 
     `
     perguntas.classList.add('centralizar');
 }
