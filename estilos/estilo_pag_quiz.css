@@ -17,13 +17,13 @@
 }
 .header-quizz span {
     display: flex;
+    position: absolute;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 39px;
     line-height: 46px;
     text-align: center;
-    position: absolute;
     z-index: 4;
     color: #FFFFFF;
 }
@@ -36,6 +36,8 @@
     width: 100%;
 }
 .conteudo-quizz {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     width: 759px;
     background: #FFFFFF;
@@ -91,6 +93,8 @@
 }
 .filtro {
     display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgb(0, 0, 0, 0.9);
     height: 227px;
     width: 100%;
@@ -190,10 +194,13 @@ button{
 
 
 @media(max-width: 900px){
- .container-quizz .opcoes .img-quizz-topo .restart button .final_quiz .conteudo-quizz {
-  width: 100%;
-
+ .container-quizz .opcoes img .conteudo-quizz .pag-quiz .img-quizz-topo .restart button .final_quiz {
+    width: 100%;
+    height: auto;
 }
 
+.pag-quiz{
+    padding: 0px;
+}
 
 }
