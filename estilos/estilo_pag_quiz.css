@@ -3,8 +3,10 @@
     height: 100%; /* height of container */
     object-fit: cover;
     z-index: 1;
-    
+    opacity: 60%;
+    background: no-repeat;
 }
+
 .header-quizz{
     display: flex;
     align-items: center;
@@ -85,16 +87,9 @@
     height: 60%;
 }
 .filtro {
-<<<<<<< HEAD
-    background-color: #000000;
-    opacity: 80%;
-    
-   
-=======
     background: rgb(0, 0, 0, 0.9);
     height: 227px;
     width: 100%;
->>>>>>> 8d1100b2de04ac6e0c5bf5b91ec06bf4552c4598
 }
 
 .final_quiz {
