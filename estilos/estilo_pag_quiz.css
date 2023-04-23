@@ -193,14 +193,9 @@ button{
 }
 
 
-@media(max-width: 900px){
- .container-quizz .opcoes img .conteudo-quizz .pag-quiz .img-quizz-topo .restart button .final_quiz {
+@media(max-width: 600px){
+   .img-quizz-topo, .conteudo-quizz, .opcoes , .final_quiz {
     width: 100%;
-    height: auto;
+   
 }
-
-.pag-quiz{
-    padding: 0px;
-}
-
 }
