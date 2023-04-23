@@ -151,7 +151,7 @@ input::placeholder {
     margin-top: 14px;
     margin-bottom: 27px;
 }
-.nivel{
+.estiloNivel{
     margin-top: 27px;
     display: flex;
     flex-direction: column;
@@ -160,7 +160,7 @@ input::placeholder {
     height: auto;
     align-items: center;
 }
-.nivel > p{
+.estiloNivel > p{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -170,16 +170,16 @@ input::placeholder {
     line-height: 23.44px;
     font-size: 20px; 
 }
-.nivel > p > img{
+.estiloNivel > p > img{
     margin-right: 30px;
 }
-.nivel :nth-child(2){
+.estiloNivel :nth-child(2){
     margin-top: 14px;
 }
-.nivel :nth-child(3){
+.estiloNivel :nth-child(3){
     margin-top: 14px;
 }
-.nivel :nth-child(4){
+.estiloNivel :nth-child(4){
     margin-top: 14px;
     margin-bottom: 27px;
 }

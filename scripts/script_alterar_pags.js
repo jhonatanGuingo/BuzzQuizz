@@ -38,12 +38,56 @@ function alertErro(erro) {
         A porcentagem está entre 0 e 100,
         Tem um nível 0,
         A descrição tem no mínimo 30 caracteres`);
+    } 
+}
+
+//verificar niveis do quizz
+function verificarNivelQuizz() {
+
+    let titulo;
+    let acertosMin;
+    let url;
+    let descricao;
+    let verificadas = 0;
+
+    let niveis = {levels: []};
+    let nivel;
+
+    let check = false;
+
+    for(let i = 1; i <= numNiveis; i++){
+
+        let niveiss = document.querySelector(`.nivel${i} .colapsarNiveis`);
+        console.log(niveiss);
+        titulo = niveiss.querySelector('.titulo').value;
+        console.log(titulo);
+        acertosMin = niveiss.querySelector('.porcentagem').value;
+        url = niveiss.querySelector(`.imagem`).value;
+        descricao = niveiss.querySelector(`.descricao`).value;
+
+        if (acertosMin === "0"){
+           check = true;
+        }
+
+        if (dadosNiveisValidos (titulo, acertosMin, url, descricao)) {
+            verificadas++;
+
+            nivel = {
+                image: url,
+                minValue: Number(acertosMin),
+                text: descricao,
+                title: titulo
+            }
+
+            niveis.levels.push(nivel);
+        }
     }
-    else {
-        alert("Sentimos muito, não foi possível criar o quizz.");
-        colocarTelaCarregando();
-        buscarQuizzes();
-    }  
+
+    if((check === true) && (verificadas == numNiveis)){
+        altFinalizarQuizz();
+    } else {
+        alertErro("criarNiveis");
+    }
 }
 
 //valida URL
@@ -53,6 +97,28 @@ function alertErro(erro) {
      }
 
 //verificações gerais
+
+function tituloNivelValido(titulo){
+    if(titulo.length > 10){
+        return true;
+    }
+    return false;
+}
+
+function porcentagemNivelValida(acertosMin) {
+    if(acertosMin >= 0 && acertosMin <= 100 && acertosMin !== ''){
+        return true;
+    }
+    return false;
+}
+
+function descricaoNiveisValida(descricao){
+    if(descricao.length >= 30){
+        return true;
+    }
+    return false;
+}
+
 function tituloPerguntasValido (string) {
     if (string.length >= 20) {
         return true;
@@ -80,6 +146,14 @@ function urlValida(string){
     } catch(err) {
             return false;   
     }
+}
+
+//verifica dados dos níveis
+function dadosNiveisValidos (titulo, acertosMin, url, descricao) {
+    return (tituloNivelValido(titulo)
+        && porcentagemNivelValida(acertosMin)
+        && urlValida(url)
+        && descricaoNiveisValida(descricao))
 }
 
 //verifica dados das respostas
@@ -309,25 +383,25 @@ function altCriarNiveis(){
     for (let i=0; i<numNiveis; i++){
         if (i==0){
             niveisCriados.push(`
-        <div class="nivel">
+        <div class="nivel${i+1} estiloNivel">
         <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis">
-        <input type="text" placeholder="Título do nível">
-        <input type="text" placeholder="% de acerto mínima">
-        <input type="text" placeholder="URL da imagem do nível">
-        <input type="text" placeholder="Descrição do nível">
+        <input class="titulo" type="text" placeholder="Título do nível">
+        <input class="porcentagem" type="text" placeholder="% de acerto mínima">
+        <input class="imagem" type="text" placeholder="URL da imagem do nível">
+        <input class="descricao" type="text" placeholder="Descrição do nível">
         </div>
         </div>
         `);
         }else{
             niveisCriados.push(`
-        <div class="nivel">
+        <div class="nivel${i+1} estiloNivel">
         <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis esconder">
-        <input type="text" placeholder="Título do nível">
-        <input type="text" placeholder="% de acerto mínima">
-        <input type="text" placeholder="URL da imagem do nível">
-        <input type="text" placeholder="Descrição do nível">
+        <input class="titulo" type="text" placeholder="Título do nível">
+        <input class="porcentagem" type="text" placeholder="% de acerto mínima">
+        <input class="imagem" type="text" placeholder="URL da imagem do nível">
+        <input class="descricao" type="text" placeholder="Descrição do nível">
         </div>
         </div>
         `);
@@ -338,7 +412,7 @@ function altCriarNiveis(){
     }
 
     niveis.innerHTML+=`
-    <button onclick ="altFinalizarQuizz()" class="prosseguir">Finalizar Quizz</button>
+    <button onclick ="verificarNivelQuizz()" class="prosseguir">Finalizar Quizz</button>
     `
     niveis.classList.add('centralizar');
 }
