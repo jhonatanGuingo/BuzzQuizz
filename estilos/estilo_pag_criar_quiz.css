@@ -44,11 +44,14 @@
     align-items: center;
 }
  input{
+    font-weight: 400;
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     font-size: 19px;
+    padding-left: 23px; 
+    box-sizing: border-box;
 }
 .infos :nth-child(1){
     margin-top: 21px;
@@ -68,7 +71,6 @@ input::placeholder {
     font-size: 19px;
     color: #D1D1D1;
     font-style: italic;
-    padding-left: 23px;
     border: 0px;
   }
   .prosseguir{
@@ -81,6 +83,7 @@ input::placeholder {
     color: white;
     font-family: roboto;
     font-size: 21px;
+    cursor: pointer;
   }
   .pagina-criar-quizz :nth-child(2) > h1{
     display: flex;
@@ -118,9 +121,11 @@ input::placeholder {
     font-weight: 700;
     line-height: 23.44px;
     font-size: 20px;
+    cursor: pointer;
 }
 .estilo > p > img{
     margin-right: 30px;
+    cursor: pointer;
 }
 .colapsarPerguntas > p{
     width: 100%;
@@ -169,6 +174,7 @@ input::placeholder {
     font-weight: 700;
     line-height: 23.44px;
     font-size: 20px; 
+    cursor: pointer;
 }
 .estiloNivel > p > img{
     margin-right: 30px;
@@ -193,6 +199,7 @@ input::placeholder {
     color: white;
     font-family: roboto;
     font-size: 21px;
+    cursor: pointer;
   }
   .finalizar>p{
     display: flex;
@@ -215,6 +222,7 @@ input::placeholder {
     font-family: roboto;
     font-size: 21px;
     margin-top: 20px;
+    cursor: pointer;
 }
 .finalizar>h3{
     position:fixed;
