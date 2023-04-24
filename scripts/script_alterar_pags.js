@@ -554,15 +554,7 @@ function alt_paginic_quiz(){
         div_img_create_div.appendChild(title_geral_create_span);
         div_img_create_div.classList.add("filtro");
         document.getElementById("header_quiz").appendChild(div_img_create_div);
-        for (let j = 0; j < questions_quiz.length; j++){
-            indexs.push(j);
-        }
-        function comparador() { 
-            return Math.random() - 0.5;
-        }
-        indexs.sort(comparador);
-        for (let c = 0; c < indexs.length; c++){
-            let a = indexs[c];
+        for (let a = 0; a < questions_quiz.length; a++){
             n_questions = n_questions + 1;
             let titulo_question = questions_quiz[a].title;
             let color_question = questions_quiz[a].color;
@@ -589,7 +581,15 @@ function alt_paginic_quiz(){
             conteudo_quiz_create_div.appendChild(pergunta_quiz_create_div);
             conteudo_quiz_create_div.appendChild(img_opcoes_create_div);
             document.getElementById("perguntas_quiz").appendChild(conteudo_quiz_create_div);
-            for (let b=0; b < answers_question.length; b++){
+            for (let c=0; c < answers_question.length; c++){
+                indexs.push(c);
+            }
+            function comparador() { 
+                return Math.random() - 0.5;
+            }
+            indexs.sort(comparador);
+            for (let d=0; d < indexs.length; d++){
+                let b = indexs[d];
                 let text_answer = answers_question[b].text;
                 let image_answer = answers_question[b].image;
                 let is_correct_answer = answers_question[b].isCorrectAnswer;
