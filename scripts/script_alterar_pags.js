@@ -478,7 +478,7 @@ function altCriarNiveis(){
         `);
         }else{
             niveisCriados.push(`
-        <div class="nivel${i+1} estiloNivel">
+        <div data-test="level-ctn" class="nivel${i+1} estiloNivel">
         <p onclick="colapsarNiveis(this)">Nível ${i+1}<img data-test="toggle" class="icon" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis esconder">
         <input data-test="level-input" class="titulo" type="text" placeholder="Título do nível">
