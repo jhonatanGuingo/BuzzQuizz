@@ -196,6 +196,8 @@ button{
 @media(max-width: 600px){
    .img-quizz-topo, .conteudo-quizz, .opcoes , .final_quiz {
     width: 100%;
-   
-}
+   }
+    body{
+        padding: 0px;
+    }
 }
