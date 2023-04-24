@@ -452,7 +452,7 @@ function altCriarPerguntas(){
         perguntas.innerHTML+=perguntasCriadas[j];
     }
     perguntas.innerHTML+=`
-    <button onclick ="verificarPerguntasCriadas()" class="prosseguir">Prosseguir pra criar níveis</button> 
+    <button data-test="go-create-levels" onclick ="verificarPerguntasCriadas()" class="prosseguir">Prosseguir pra criar níveis</button> 
     `
     perguntas.classList.add('centralizar');
 }
@@ -494,7 +494,7 @@ function altCriarNiveis(){
     }
 
     niveis.innerHTML+=`
-    <button data-test="go-create-levels" onclick ="verificarNivelQuizz()" class="prosseguir">Finalizar Quizz</button>
+    <button data-test="go-finish" onclick ="verificarNivelQuizz()" class="prosseguir">Finalizar Quizz</button>
     `
     niveis.classList.add('centralizar');
 }
