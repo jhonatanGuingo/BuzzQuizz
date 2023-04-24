@@ -403,8 +403,8 @@ function altCriarPerguntas(){
     for(let i=0; i<numPerguntas; i++){
         if(i==0){
             perguntasCriadas.push(`
-        <div data-test="question-ctn" class="pergunta${i+1} estilo">
-            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img data-test="toggle" class="icon esconder" src="./imagens/ícone.png"></p>
+        <div class="pergunta${i+1} estilo" data-test="question-ctn">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas">
             <input data-test="question-input" class="titulo" type="text" placeholder="Texto da pergunta">
             <input data-test="question-color-input" class="cor" type="text" placeholder="Cor de fundo da pergunta">
@@ -423,8 +423,13 @@ function altCriarPerguntas(){
         `);
         }else{
             perguntasCriadas.push(`
+<<<<<<< HEAD
+         <div class="pergunta${i+1} estilo" data-test="question-ctn">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
+=======
          <div data-test="question-ctn" class="pergunta${i+1} estilo">
             <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img data-test="toggle" class="icon" src="./imagens/ícone.png"></p>
+>>>>>>> e94266e10137cf83a0235b5dd44adfb3c0b56123
             <div class="colapsarPerguntas esconder">
             <input data-test="question-input" class="titulo" type="text" placeholder="Texto da pergunta">
             <input data-test="question-color-input" class="cor" type="text" placeholder="Cor de fundo da pergunta">
@@ -537,7 +542,6 @@ function alt_paginic_quiz(){
     send.then(sucess);
     send.catch(error);
     function sucess(response){
-        let indexs = [];
         let id_quiz = response.data.id;
         let titulo_quiz = response.data.title;
         let image_quiz = response.data.image;
@@ -583,14 +587,15 @@ function alt_paginic_quiz(){
             conteudo_quiz_create_div.appendChild(pergunta_quiz_create_div);
             conteudo_quiz_create_div.appendChild(img_opcoes_create_div);
             document.getElementById("perguntas_quiz").appendChild(conteudo_quiz_create_div);
-            for (let c=0; c < answers_question.length; c++){
+            let indexs = [];
+            for (let c = 0; c < answers_question.length; c++){
                 indexs.push(c);
             }
             function comparador() { 
                 return Math.random() - 0.5;
             }
             indexs.sort(comparador);
-            for (let d=0; d < indexs.length; d++){
+            for (let d = 0; d < indexs.length; d++){
                 let b = indexs[d];
                 let text_answer = answers_question[b].text;
                 let image_answer = answers_question[b].image;
