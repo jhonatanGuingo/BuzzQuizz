@@ -35,6 +35,7 @@ function atualizar_quizzes(){
                 create_span_div_quiz.classList.add("todos-quizzes-conteudo-tituloquiz");
                 create_span_div_quiz.innerHTML = titulo_quiz;
                 create_div_quiz.appendChild(create_span_div_quiz);
+                create_div_quiz.setAttribute('data-test','others-quiz');
                 create_btn_quiz.appendChild(create_div_quiz);
                 document.getElementById("todos_quizzes_conteudo").appendChild(create_btn_quiz);
             }
@@ -47,6 +48,7 @@ function atualizar_quizzes(){
                 create_span_div_quiz.classList.add("seus-quizzes-mostrar-conteudo-tituloquiz");
                 create_span_div_quiz.innerHTML = titulo_quiz;
                 create_div_quiz.appendChild(create_span_div_quiz);
+                create_div_quiz.setAttribute('data-test','my-quiz');
                 create_btn_quiz.appendChild(create_div_quiz);
                 document.getElementById("seus_quizzes_mostrar_conteudo").appendChild(create_btn_quiz);
             }

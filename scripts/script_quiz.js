@@ -53,6 +53,7 @@ async function verificar_resposta(){
             }
         }
         fimtitulo_create_p.innerHTML = title_level;
+        fimtitulo_create_p.setAttribute('data-test','level-title');
         fimtitulo_create_div.classList.add("pergunta-quizz");
         fimtitulo_create_div.setAttribute("style", style_background_line);
         fimtitulo_create_div.append(fimtitulo_create_p);
@@ -60,8 +61,10 @@ async function verificar_resposta(){
         fim_create_div.classList.add("conteudo-quizz");
         fimlast_create_img.setAttribute("src", image_level);
         fimlast_create_img.classList.add("img-final");
+        fimlast_create_img.setAttribute('data-test','level-img');
         fimlast_create_span.innerHTML = text_level.replace(/"/g, '');
         fimlast_create_span.setAttribute("style", "color: rgb(0, 0, 0);width: 50%;")
+        fimlast_create_span.setAttribute('data-test','level-text');
         fimlast_create_div.appendChild(fimlast_create_img);
         fimlast_create_div.appendChild(fimlast_create_span);
         fimlast_create_div.classList.add("final-lastdiv");
@@ -74,7 +77,9 @@ async function verificar_resposta(){
         fim_home_btn.innerHTML = "Home";
         fim_restart_btn.setAttribute("onclick", "alt_quiz_quiz()");
         fim_restart_btn.setAttribute("style", "padding: 10px 30px;background-color: rgb(255, 50, 50);border-radius: 20px; color: rgb(255, 255, 255); margin:0px 0px 10px;")
+        fim_restart_btn.setAttribute('data-test','restart');
         fim_home_btn.setAttribute("onclick", "alt_quiz_home()");
+        fim_home_btn.setAttribute('data-test','go-home');
         document.getElementById("perguntas_quiz").appendChild(fim_restart_btn);
         document.getElementById("perguntas_quiz").appendChild(fim_home_btn);
     }

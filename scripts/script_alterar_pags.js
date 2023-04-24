@@ -509,6 +509,13 @@ function altFinalizarQuizz(){
     <div onclick ="voltarPagInicial()" >Voltar pra home</div>
     `
     finalizar.classList.add('centralizar');
+    // Philippe: adicionei essas linhas para poder armazenar os Id's dos quizzes criados!
+    promessa.then(sucesso);
+    function sucesso(resposta){
+        user_quizzes.push(resposta.id);
+        localStorage.setItem("ids_quizzes_criados", toString(user_quizzes));
+    }
+    //
 }
 //retorna para tela inicial
 function voltarPagInicial(){
@@ -528,6 +535,7 @@ function alt_paginic_quiz(){
     send.then(sucess);
     send.catch(error);
     function sucess(response){
+        let indexs = [];
         let id_quiz = response.data.id;
         let titulo_quiz = response.data.title;
         let image_quiz = response.data.image;
@@ -546,7 +554,15 @@ function alt_paginic_quiz(){
         div_img_create_div.appendChild(title_geral_create_span);
         div_img_create_div.classList.add("filtro");
         document.getElementById("header_quiz").appendChild(div_img_create_div);
-        for (let a = 0; a < questions_quiz.length; a++){
+        for (let j = 0; j < questions_quiz.length; j++){
+            indexs.push(j);
+        }
+        function comparador() { 
+            return Math.random() - 0.5;
+        }
+        indexs.sort(comparador);
+        for (let b = 0; b < indexs.length; b++){
+            let a = indexs[b];
             n_questions = n_questions + 1;
             let titulo_question = questions_quiz[a].title;
             let color_question = questions_quiz[a].color;
@@ -566,8 +582,10 @@ function alt_paginic_quiz(){
             pergunta_quiz_create_div.classList.add("pergunta-quizz");
             pergunta_quiz_create_div.setAttribute("style", style_background_line);
             pergunta_quiz_create_div.appendChild(pergunta_quiz_create_p);
+            pergunta_quiz_create_div.setAttribute('data-test','question-title');
             conteudo_quiz_create_div.classList.add("conteudo-quizz");
             conteudo_quiz_create_div.id = "caixa_pergunta";
+            conteudo_quiz_create_div.setAttribute('data-test','question');
             conteudo_quiz_create_div.appendChild(pergunta_quiz_create_div);
             conteudo_quiz_create_div.appendChild(img_opcoes_create_div);
             document.getElementById("perguntas_quiz").appendChild(conteudo_quiz_create_div);
@@ -583,7 +601,9 @@ function alt_paginic_quiz(){
                 opcoes_create_img.setAttribute("src", image_answer);
                 opcoes_create_img.setAttribute("alt", "");
                 opcoes_create_p.innerHTML = text_answer;
+                opcoes_create_p.setAttribute('data-test','answer-text');
                 opcoes_create_btn.classList.add("opcoes");
+                opcoes_create_btn.setAttribute('data-test','answer');
                 opcoes_create_btn.appendChild(opcoes_create_img);
                 opcoes_create_btn.appendChild(opcoes_create_p);
                 if (is_correct_answer == true){
