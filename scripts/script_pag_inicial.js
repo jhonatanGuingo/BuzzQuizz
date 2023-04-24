@@ -19,8 +19,11 @@ function atualizar_quizzes(){
             let create_btn_quiz = document.createElement('button');
             let create_div_quiz = document.createElement('div');
             let create_span_div_quiz = document.createElement('span');
+            let create_img = document.createElement('img');
             let style_line = 'background-image: linear-gradient(360deg, rgb(0, 0, 0, 0.8) 2%, rgb(255, 255, 255, 0) 100%), url(' + image_quiz + ')';
             let a = 0;
+            create_img.src = image_quiz;
+            create_img.setAttribute('style', 'width: 0px;');
             for (let j = 0; j < user_quizzes.length; j++){
                 if (user_quizzes[j] == id_quiz){
                     a = 1;
@@ -32,6 +35,7 @@ function atualizar_quizzes(){
                 create_div_quiz.classList.add("todos-quizzes-quizdiv");
                 create_div_quiz.id = id_quiz;
                 create_div_quiz.setAttribute("style", style_line);
+                create_div_quiz.appendChild(create_img);
                 create_span_div_quiz.classList.add("todos-quizzes-conteudo-tituloquiz");
                 create_span_div_quiz.innerHTML = titulo_quiz;
                 create_div_quiz.appendChild(create_span_div_quiz);

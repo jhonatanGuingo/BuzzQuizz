@@ -403,7 +403,7 @@ function altCriarPerguntas(){
     for(let i=0; i<numPerguntas; i++){
         if(i==0){
             perguntasCriadas.push(`
-        <div class="pergunta${i+1} estilo">
+        <div class="pergunta${i+1} estilo" data-test="question-ctn">
             <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas">
             <input class="titulo" type="text" placeholder="Texto da pergunta">
@@ -423,7 +423,7 @@ function altCriarPerguntas(){
         `);
         }else{
             perguntasCriadas.push(`
-         <div class="pergunta${i+1} estilo">
+         <div class="pergunta${i+1} estilo" data-test="question-ctn">
             <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas esconder">
             <input class="titulo" type="text" placeholder="Texto da pergunta">
@@ -535,7 +535,6 @@ function alt_paginic_quiz(){
     send.then(sucess);
     send.catch(error);
     function sucess(response){
-        let indexs = [];
         let id_quiz = response.data.id;
         let titulo_quiz = response.data.title;
         let image_quiz = response.data.image;
@@ -581,14 +580,15 @@ function alt_paginic_quiz(){
             conteudo_quiz_create_div.appendChild(pergunta_quiz_create_div);
             conteudo_quiz_create_div.appendChild(img_opcoes_create_div);
             document.getElementById("perguntas_quiz").appendChild(conteudo_quiz_create_div);
-            for (let c=0; c < answers_question.length; c++){
+            let indexs = [];
+            for (let c = 0; c < answers_question.length; c++){
                 indexs.push(c);
             }
             function comparador() { 
                 return Math.random() - 0.5;
             }
             indexs.sort(comparador);
-            for (let d=0; d < indexs.length; d++){
+            for (let d = 0; d < indexs.length; d++){
                 let b = indexs[d];
                 let text_answer = answers_question[b].text;
                 let image_answer = answers_question[b].image;
