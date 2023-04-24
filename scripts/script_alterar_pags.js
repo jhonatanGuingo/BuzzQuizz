@@ -561,8 +561,8 @@ function alt_paginic_quiz(){
             return Math.random() - 0.5;
         }
         indexs.sort(comparador);
-        for (let b = 0; b < indexs.length; b++){
-            let a = indexs[b];
+        for (let c = 0; c < indexs.length; c++){
+            let a = indexs[c];
             n_questions = n_questions + 1;
             let titulo_question = questions_quiz[a].title;
             let color_question = questions_quiz[a].color;
