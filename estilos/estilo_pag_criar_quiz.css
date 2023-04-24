@@ -210,7 +210,7 @@ input::placeholder {
     font-size: 23px;
     margin-top: 70px;
   }
-.finalizar>img{
+.finalizar>.banner:nth-child(1){
     height: 266px;
     width: 500px;
     object-fit: cover;
@@ -224,7 +224,7 @@ input::placeholder {
     margin-top: 20px;
     cursor: pointer;
 }
-.finalizar>h3{
+.finalizar>.banner>h3{
     position:fixed;
     font-weight: 400;
     font-family: roboto;
