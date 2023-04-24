@@ -389,10 +389,6 @@ function altCriarQuizz(){
         <input data-test="img-input" class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz">
         <input data-test="questions-amount-input" class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
         <input data-test="levels-amount-input" class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
-        <input class="titulo" type="text" placeholder="Título do seu quizz" data-test="title-input">
-        <input class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz" data-test="img-input">
-        <input class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz" data-test="questions-amount-input">
-        <input class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz" data-test="levels-amount-input">
     </div>
     <button onclick ="validacoes()" class="prosseguir" data-test="go-create-questions">Prosseguir pra criar perguntas</button>
     `
