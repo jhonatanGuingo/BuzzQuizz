@@ -385,12 +385,12 @@ function altCriarQuizz(){
     info.innerHTML+=`
     <h1>Comece pelo começo</h1>
     <div class="infos">
-        <input class="titulo" type="text" placeholder="Título do seu quizz">
-        <input class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz">
-        <input class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
-        <input class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
+        <input data-test="title-input" class="titulo" type="text" placeholder="Título do seu quizz">
+        <input data-test="img-input" class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz">
+        <input data-test="questions-amount-input" class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
+        <input data-test="levels-amount-input" class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
     </div>
-    <button onclick ="validacoes()" class="prosseguir">Prosseguir pra criar perguntas</button>
+    <button data-test="go-create-questions" onclick ="validacoes()" class="prosseguir">Prosseguir pra criar perguntas</button>
     `
     info.classList.add('centralizar');
 }
@@ -403,41 +403,41 @@ function altCriarPerguntas(){
     for(let i=0; i<numPerguntas; i++){
         if(i==0){
             perguntasCriadas.push(`
-        <div class="pergunta${i+1} estilo">
-            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
+        <div data-test="question-ctn" class="pergunta${i+1} estilo">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img data-test="toggle" class="icon esconder" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas">
-            <input class="titulo" type="text" placeholder="Texto da pergunta">
-            <input class="cor" type="text" placeholder="Cor de fundo da pergunta">
+            <input data-test="question-input" class="titulo" type="text" placeholder="Texto da pergunta">
+            <input data-test="question-color-input" class="cor" type="text" placeholder="Cor de fundo da pergunta">
             <p>Resposta Correta</p>
-            <input class="respostaCorreta" type="text" placeholder="Resposta correta">
-            <input class="urlCorreta" type="text" placeholder="URL da imagem">
+            <input data-test="correct-answer-input" class="respostaCorreta" type="text" placeholder="Resposta correta">
+            <input data-test="correct-img-input" class="urlCorreta" type="text" placeholder="URL da imagem">
             <p>Respostas Incorretas</p>
-            <input class="resposta1" type="text" placeholder="Resposta incorreta 1">
-            <input class="URL1" type="text" placeholder="URL da imagem 1">
-            <input class="resposta2" type="text" placeholder="Resposta incorreta 2">
-            <input class="URL2" type="text" placeholder="URL da imagem 2">
-            <input class="resposta3" type="text" placeholder="Resposta incorreta 3">
-            <input class="URL3" type="text" placeholder="URL da imagem 3">
+            <input data-test="wrong-answer-input" class="resposta1" type="text" placeholder="Resposta incorreta 1">
+            <input data-test="wrong-img-input" class="URL1" type="text" placeholder="URL da imagem 1">
+            <input data-test="wrong-answer-input" class="resposta2" type="text" placeholder="Resposta incorreta 2">
+            <input data-test="wrong-img-input" class="URL2" type="text" placeholder="URL da imagem 2">
+            <input data-test="wrong-answer-input" class="resposta3" type="text" placeholder="Resposta incorreta 3">
+            <input data-test="wrong-img-input" class="URL3" type="text" placeholder="URL da imagem 3">
             </div>
         </div>
         `);
         }else{
             perguntasCriadas.push(`
-         <div class="pergunta${i+1} estilo">
-            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
+         <div data-test="question-ctn" class="pergunta${i+1} estilo">
+            <p onclick="colapsarPerguntas(this)">Pergunta ${i+1}<img data-test="toggle" class="icon" src="./imagens/ícone.png"></p>
             <div class="colapsarPerguntas esconder">
-            <input class="titulo" type="text" placeholder="Texto da pergunta">
-            <input class="cor" type="text" placeholder="Cor de fundo da pergunta">
+            <input data-test="question-input" class="titulo" type="text" placeholder="Texto da pergunta">
+            <input data-test="question-color-input" class="cor" type="text" placeholder="Cor de fundo da pergunta">
             <p>Resposta Correta</p>
-            <input class="respostaCorreta" type="text" placeholder="Resposta correta">
-            <input class="urlCorreta" type="text" placeholder="URL da imagem">
+            <input data-test="correct-answer-input" class="respostaCorreta" type="text" placeholder="Resposta correta">
+            <input data-test="correct-img-input" class="urlCorreta" type="text" placeholder="URL da imagem">
             <p>Respostas Incorretas</p>
-            <input class="resposta1" type="text" placeholder="Resposta incorreta 1">
-            <input class="URL1" type="text" placeholder="URL da imagem 1">
-            <input class="resposta2" type="text" placeholder="Resposta incorreta 2">
-            <input class="URL2" type="text" placeholder="URL da imagem 2">
-            <input class="resposta3" type="text" placeholder="Resposta incorreta 3">
-            <input class="URL3" type="text" placeholder="URL da imagem 3">
+            <input data-test="wrong-answer-input" class="resposta1" type="text" placeholder="Resposta incorreta 1">
+            <input data-test="wrong-img-input" class="URL1" type="text" placeholder="URL da imagem 1">
+            <input data-test="wrong-answer-input" class="resposta2" type="text" placeholder="Resposta incorreta 2">
+            <input data-test="wrong-img-input" class="URL2" type="text" placeholder="URL da imagem 2">
+            <input data-test="wrong-answer-input" class="resposta3" type="text" placeholder="Resposta incorreta 3">
+            <input data-test="wrong-img-input" class="URL3" type="text" placeholder="URL da imagem 3">
             </div>
         </div>
         `);
@@ -461,25 +461,25 @@ function altCriarNiveis(){
     for (let i=0; i<numNiveis; i++){
         if (i==0){
             niveisCriados.push(`
-        <div class="nivel${i+1} estiloNivel">
-        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon esconder" src="./imagens/ícone.png"></p>
+        <div data-test="level-ctn" class="nivel${i+1} estiloNivel">
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img data-test="toggle" class="icon esconder" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis">
-        <input class="titulo" type="text" placeholder="Título do nível">
-        <input class="porcentagem" type="text" placeholder="% de acerto mínima">
-        <input class="imagem" type="text" placeholder="URL da imagem do nível">
-        <input class="descricao" type="text" placeholder="Descrição do nível">
+        <input data-test="level-input" class="titulo" type="text" placeholder="Título do nível">
+        <input data-test="level-percent-input" class="porcentagem" type="text" placeholder="% de acerto mínima">
+        <input data-test="level-img-input" class="imagem" type="text" placeholder="URL da imagem do nível">
+        <input data-test="level-description-input" class="descricao" type="text" placeholder="Descrição do nível">
         </div>
         </div>
         `);
         }else{
             niveisCriados.push(`
         <div class="nivel${i+1} estiloNivel">
-        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img class="icon" src="./imagens/ícone.png"></p>
+        <p onclick="colapsarNiveis(this)">Nível ${i+1}<img data-test="toggle" class="icon" src="./imagens/ícone.png"></p>
         <div class="colapsarNiveis esconder">
-        <input class="titulo" type="text" placeholder="Título do nível">
-        <input class="porcentagem" type="text" placeholder="% de acerto mínima">
-        <input class="imagem" type="text" placeholder="URL da imagem do nível">
-        <input class="descricao" type="text" placeholder="Descrição do nível">
+        <input data-test="level-input" class="titulo" type="text" placeholder="Título do nível">
+        <input data-test="level-percent-input" class="porcentagem" type="text" placeholder="% de acerto mínima">
+        <input data-test="level-img-input" class="imagem" type="text" placeholder="URL da imagem do nível">
+        <input data-test="level-description-input" class="descricao" type="text" placeholder="Descrição do nível">
         </div>
         </div>
         `);
@@ -490,7 +490,7 @@ function altCriarNiveis(){
     }
 
     niveis.innerHTML+=`
-    <button onclick ="verificarNivelQuizz()" class="prosseguir">Finalizar Quizz</button>
+    <button data-test="go-create-levels" onclick ="verificarNivelQuizz()" class="prosseguir">Finalizar Quizz</button>
     `
     niveis.classList.add('centralizar');
 }
@@ -503,10 +503,12 @@ function altFinalizarQuizz(){
     let finalizar = document.getElementById('finalizar_quizz');
     finalizar.innerHTML+=`
     <p>Seu quizz está pronto!</p>
+    <div data-test="success-banner" class="banner">
     <img src="${urlTitulo}">
     <h3>${titulo}</h3>
-    <button onclick ="acessarQuizz()" class="prosseguir-finalizar">Acessar Quizz</button>
-    <div onclick ="voltarPagInicial()" >Voltar pra home</div>
+    </div>
+    <button data-test="go-quiz" onclick ="acessarQuizz()" class="prosseguir-finalizar">Acessar Quizz</button>
+    <div data-test="go-home"onclick ="voltarPagInicial()" >Voltar pra home</div>
     `
     finalizar.classList.add('centralizar');
     // Philippe: adicionei essas linhas para poder armazenar os Id's dos quizzes criados!
