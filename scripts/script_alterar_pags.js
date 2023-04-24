@@ -9,9 +9,77 @@ let numPerguntas=null;
 let numNiveis=null;
 let perguntasCriadas=[];
 let niveisCriados=[];
+let perguntas = [];
+let respostas = [];
 
-var perguntas = [];
-var respostas = [];
+let objeto = {
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
 
 //mostra um alert com possíveis erros da página em questão
 function alertErro(erro) {
@@ -50,7 +118,7 @@ function verificarNivelQuizz() {
     let descricao;
     let verificadas = 0;
 
-    let niveis = {levels: []};
+    let niveis = [];
     let nivel;
 
     let check = false;
@@ -58,9 +126,7 @@ function verificarNivelQuizz() {
     for(let i = 1; i <= numNiveis; i++){
 
         let niveiss = document.querySelector(`.nivel${i} .colapsarNiveis`);
-        console.log(niveiss);
         titulo = niveiss.querySelector('.titulo').value;
-        console.log(titulo);
         acertosMin = niveiss.querySelector('.porcentagem').value;
         url = niveiss.querySelector(`.imagem`).value;
         descricao = niveiss.querySelector(`.descricao`).value;
@@ -79,11 +145,18 @@ function verificarNivelQuizz() {
                 title: titulo
             }
 
-            niveis.levels.push(nivel);
+            niveis.push(nivel);
         }
     }
 
     if((check === true) && (verificadas == numNiveis)){
+        for (let j=0; j<niveis.length; j++){
+            objeto.levels[j].title = niveis[j].title;
+            objeto.levels[j].image = niveis[j].image;
+            objeto.levels[j].text = niveis[j].text;
+            objeto.levels[j].minValue = niveis[j].minValue;
+        }
+        console.log(objeto);
         altFinalizarQuizz();
     } else {
         alertErro("criarNiveis");
@@ -92,7 +165,7 @@ function verificarNivelQuizz() {
 
 //valida URL
     function validarURL(url) {
-      var regex = /^(ftp|http|https):\/\/[^ "]+$/;
+      let regex = /^(ftp|http|https):\/\/[^ "]+$/;
       return regex.test(url);
      }
 
@@ -166,17 +239,14 @@ function dadosRespostasValidos (titulo, cor, respostaCorreta, resposta1, respost
 
 //verifica validações perguntas
 function verificarPerguntasCriadas() {
-        let perguntas = {questions: []};
+        let perguntas = [];
         let verificadas = 0;
     
         for (let i = 1; i <= numPerguntas; i++) {
             
-            console.log(i);
             let pergunta = document.querySelector(`.pergunta${i} .colapsarPerguntas`);
-            console.log(pergunta);
 
             let titulo = pergunta.querySelector(".titulo").value;
-            console.log(titulo);
             let cor = pergunta.querySelector(".cor").value;
             let respostaCorreta = pergunta.querySelector(".respostaCorreta").value;
             let URLCorreta = pergunta.querySelector(".urlCorreta").value;
@@ -232,12 +302,19 @@ function verificarPerguntasCriadas() {
                     title: titulo
                 };
     
-                perguntas.questions.push(perguntaArray);
+                perguntas.push(perguntaArray);
             }
         }
-    
-        console.log(verificadas);
         if (verificadas == numPerguntas) {
+            for (let j=0; j<numPerguntas; j++){
+                objeto.questions[j].title = perguntas[j].title;
+                objeto.questions[j].color = perguntas[j].color;
+                for (let k=0; k<respostas.length; k++){
+                    objeto.questions[j].answers[k].text=respostas[k].text;
+                    objeto.questions[j].answers[k].image=respostas[k].image;
+                    objeto.questions[j].answers[k].isCorrectAnswer = respostas[k].isCorrectAnswer;
+                }
+            }
             altCriarNiveis();
         } else {
             alertErro("criarPerguntas");
@@ -247,6 +324,7 @@ function verificarPerguntasCriadas() {
 
 //verifica validações informações principais
 function validacoes(){
+
     //pegando o título digitado
     let tit=document.querySelector('.titulo');
     titulo = tit.value;
@@ -255,9 +333,7 @@ function validacoes(){
     //pegando a URL digitada
     let url=document.querySelector('.urlTitulo');
     urlTitulo = url.value;
-    console.log(urlTitulo);
     let urlValida = validarURL(urlTitulo);
-    console.log(urlValida);
 
     //pegando o numero de perguntas digitado
     let perguntas=document.querySelector('.numPerguntas');
@@ -272,6 +348,8 @@ function validacoes(){
     if ((numPerguntas<3) || (numNiveis<2) || (caracteres<20 || caracteres>65) || (urlValida===false)){
         alertErro("dadosBasicos");
     }else{
+        objeto.title = titulo;
+        objeto.image = urlTitulo;
         altCriarPerguntas();
     }
 }
@@ -418,14 +496,15 @@ function altCriarNiveis(){
 }
 //muda para tela de finalização da criação de um quizz
 function altFinalizarQuizz(){
+    let promessa=axios.post("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes", objeto);
     let=niveis = document.getElementById('niveis_do_quizz') ;
     niveis.classList.remove('centralizar');
     niveis.classList.add('esconder');
     let finalizar = document.getElementById('finalizar_quizz');
     finalizar.innerHTML+=`
     <p>Seu quizz está pronto!</p>
-    <img src="https://uploads.jovemnerd.com.br/wp-content/uploads/2023/03/naruto_episodios_ineditos__3kf0w13t5-1210x544.jpg">
-    <h3>nome</h3>
+    <img src="${urlTitulo}">
+    <h3>${titulo}</h3>
     <button onclick ="acessarQuizz()" class="prosseguir-finalizar">Acessar Quizz</button>
     <div onclick ="voltarPagInicial()" >Voltar pra home</div>
     `
