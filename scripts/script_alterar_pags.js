@@ -385,7 +385,7 @@ function altCriarQuizz(){
     info.innerHTML+=`
     <h1>Comece pelo começo</h1>
     <div class="infos">
-        <input class="titulo" type="text" placeholder="Título do seu quizz">
+        <input class="titulo" type="text" placeholder="Título do seu quizz" data-test="title-input">
         <input class="urlTitulo" type="text" placeholder="URL da imagem do seu quizz">
         <input class="numPerguntas" type="text" placeholder="Quantidade de perguntas do quizz">
         <input class="numNiveis" type="text" placeholder="Quantidade de níveis do quizz">
